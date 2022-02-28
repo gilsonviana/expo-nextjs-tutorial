@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import { useRouter } from '../../common/hooks/useRouter';
  
 export const HomeScreen: FC = () => {
+  const { navigate } = useRouter();
   const [isUploading, setIsUpload] = useState(false);
   const [imageUri, setImageUri] = useState<string | null>(null);
  
@@ -30,6 +32,7 @@ export const HomeScreen: FC = () => {
     setIsUpload(true);
     setTimeout(() => {
       setIsUpload(() => false);
+      navigate('Success');
     }, 2500);
   };
  
